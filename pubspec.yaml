@@ -19,3 +19,17 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: ErasB
+      fonts:
+        - asset: assets/fonts/eras_bold.ttf
+    - family: ErasD
+      fonts:
+        - asset: assets/fonts/eras_demi.ttf
+    - family: ErasM
+      fonts:
+        - asset: assets/fonts/eras_regular.ttf
+
