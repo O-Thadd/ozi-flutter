@@ -44,3 +44,41 @@ const ColorScheme oziLightColorScheme = ColorScheme.light(
     surface: oziGrey2,
     onSurface: Colors.black,
 );
+
+
+const TextTheme oziTextTheme = TextTheme(
+    headlineLarge: TextStyle(
+        fontFamily: 'ErasB',
+        fontSize: 26
+    ),
+
+    titleMedium: TextStyle(
+        fontFamily: 'ErasB',
+        fontSize: 22
+    ),
+
+    bodyLarge: TextStyle(
+        fontFamily: 'ErasB',
+        fontSize: 18
+    ),
+
+    bodyMedium: TextStyle(
+        fontFamily: 'ErasR',
+        fontSize: 16
+    ),
+
+    labelLarge: TextStyle(
+        fontFamily: 'ErasL',
+        fontSize: 12
+    ),
+
+    labelMedium : TextStyle(
+        fontFamily : 'ErasL',
+        fontSize : 12
+    ),
+
+    labelSmall : TextStyle(
+        fontFamily : 'ErasL',
+        fontSize : 10
+    )
+);

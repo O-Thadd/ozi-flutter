@@ -21,15 +21,16 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/avis/
 
   fonts:
     - family: ErasB
       fonts:
         - asset: assets/fonts/eras_bold.ttf
-    - family: ErasD
+    - family: ErasR
       fonts:
-        - asset: assets/fonts/eras_demi.ttf
-    - family: ErasM
+        - asset: assets/fonts/eras_medium.ttf
+    - family: ErasL
       fonts:
-        - asset: assets/fonts/eras_regular.ttf
+        - asset: assets/fonts/eras_good_normal.ttf
 

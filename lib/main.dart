@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ozi_flutter/home_screen.dart';
+import 'package:ozi_flutter/test_instances.dart';
 import 'package:ozi_flutter/theme.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   bool inDarkMode = false;
 
-  void toggleTheme(){
+  void toggleTheme() {
     setState(() {
       inDarkMode = !inDarkMode;
     });
@@ -27,21 +28,22 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: inDarkMode ? oziDarkColorScheme : oziLightColorScheme
+        useMaterial3: true,
+        colorScheme: inDarkMode ? oziDarkColorScheme : oziLightColorScheme,
+        textTheme: oziTextTheme
       ),
-
       home: Scaffold(
         body: SafeArea(
-          child: Center(
-            // child: HomeScreen(),
-            child: ThemeSwitch(inDarkMode: inDarkMode, onToggle: toggleTheme),
+          child: HomeScreen(
+            thisUser: uiTestUser1,
+            chats: testPairChats1,
+            // chats: const [],
+            inDarkMode: inDarkMode,
+            toggleTheme: toggleTheme,
           ),
         ),
       ),
     );
   }
-
 }
