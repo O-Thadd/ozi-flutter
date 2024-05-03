@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ozi_flutter/home_screen.dart';
+import 'package:ozi_flutter/login_screen.dart';
 import 'package:ozi_flutter/test_instances.dart';
 import 'package:ozi_flutter/theme.dart';
 
@@ -42,6 +43,7 @@ class _MainAppState extends State<MainApp> {
             inDarkMode: inDarkMode,
             toggleTheme: toggleTheme,
           ),
+          // child: LoginScreen(),
         ),
       ),
     );

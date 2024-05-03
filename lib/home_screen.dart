@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:ozi_flutter/models/PairChat.dart';
 import 'package:ozi_flutter/models/menu_data.dart';
 import 'package:ozi_flutter/models/user.dart';
@@ -68,22 +70,65 @@ class _HomeScreenState extends State<HomeScreen> {
             // const Chat(chat: testChat1)
           ],
         ),
+
+        // Container(
+        //   child: Row(
+        //     children: [
+        //       Expanded(child: SizedBox()),
+        //       Flexible(
+        //         child: ListView.builder(
+        //           shrinkWrap: true,
+        //           itemCount: menus.length,
+        //           itemBuilder: (context, index) {
+        //             var menu = menus[index];
+        //             return MenuItem(
+        //               key: ObjectKey(menu.name),
+        //               menuData: menu,
+        //             );
+        //           },
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
+
         Align(
           alignment: Alignment.topRight,
           child: Padding(
-            padding: const EdgeInsets.only(top: 60, right: 16),
+            padding: const EdgeInsets.only(top: 70, right: 16),
             child: AnimatedSlide(
               offset: menuDisplayed ? Offset.zero : const Offset(0, -5),
               duration: const Duration(milliseconds: 300),
-              child: Container(
-                color: Theme.of(context).colorScheme.surface,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: menus.length,
-                    itemBuilder: (context, index) {
-                    var menu = menus[index];
-                    return MenuItem(key: ObjectKey(menu.name), menuData: menu,);
-                }),
+              child: Row(
+                children: [
+                  const Expanded(child: SizedBox()),
+                  Flexible(
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surface,
+                        boxShadow: const [BoxShadow(blurRadius: 4)],
+                        borderRadius: const BorderRadius.all(Radius.circular(8))
+                      ),
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: menus.length,
+                          itemBuilder: (context, index) {
+                            var menu = menus[index];
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                MenuItem(
+                                  key: ObjectKey(menu.name),
+                                  menuData: menu,
+                                ),
+                                const SizedBox(height: 12)
+                              ],
+                            );
+                          }),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -309,11 +354,18 @@ class MenuItem extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(menuData.icon, color: Theme.of(context).colorScheme.primary,),
-        const SizedBox(width: 8,),
-        Text(menuData.name, style: Theme.of(context).textTheme.bodyMedium,)
+        Icon(
+          menuData.icon,
+          color: Theme.of(context).colorScheme.primary,
+        ),
+        const SizedBox(
+          width: 8,
+        ),
+        Text(
+          menuData.name,
+          style: Theme.of(context).textTheme.bodyMedium,
+        )
       ],
     );
   }
-
 }
