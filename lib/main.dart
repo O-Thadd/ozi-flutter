@@ -30,22 +30,10 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: inDarkMode ? oziDarkColorScheme : oziLightColorScheme,
-        textTheme: oziTextTheme
-      ),
-      home: Scaffold(
-        body: SafeArea(
-          child: HomeScreen(
-            thisUser: uiTestUser1,
-            chats: testPairChats1,
-            // chats: const [],
-            inDarkMode: inDarkMode,
-            toggleTheme: toggleTheme,
-          ),
-          // child: LoginScreen(),
-        ),
-      ),
+          useMaterial3: true,
+          colorScheme: inDarkMode ? oziDarkColorScheme : oziLightColorScheme,
+          textTheme: oziTextTheme),
+      home: LoginScreen(inDarkMode: inDarkMode, toggleTheme: toggleTheme,),
     );
   }
 }

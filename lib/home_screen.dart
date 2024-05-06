@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:ozi_flutter/models/PairChat.dart';
 import 'package:ozi_flutter/models/menu_data.dart';
 import 'package:ozi_flutter/models/user.dart';
@@ -31,109 +29,113 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Column(
+    return Scaffold(
+      body: SafeArea(
+        child: Stack(
           children: [
-            Container(
-              padding: const EdgeInsets.all(16),
-              color: Theme.of(context).colorScheme.surface,
-              child: TopBar(
-                user: widget.thisUser,
-                inDarkMode: widget.inDarkMode,
-                toggleTheme: widget.toggleTheme,
-                toggleMenuVisibility: () {
-                  setState(() {
-                    menuDisplayed = !menuDisplayed;
-                  });
-                },
-              ),
-            ),
-            Expanded(
-              child: widget.chats.isNotEmpty
-                  ? ListView.builder(
-                      padding: const EdgeInsets.all(16),
-                      itemCount: widget.chats.length,
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            Chat(
-                                key: ObjectKey(widget.chats[index].chatId),
-                                chat: widget.chats[index]),
-                            const SizedBox(height: 12),
-                          ],
-                        );
-                      },
-                    )
-                  : Image.asset('assets/images/ozi empty state.png'),
-            ),
-            // const Chat(chat: testChat1)
-          ],
-        ),
-
-        // Container(
-        //   child: Row(
-        //     children: [
-        //       Expanded(child: SizedBox()),
-        //       Flexible(
-        //         child: ListView.builder(
-        //           shrinkWrap: true,
-        //           itemCount: menus.length,
-        //           itemBuilder: (context, index) {
-        //             var menu = menus[index];
-        //             return MenuItem(
-        //               key: ObjectKey(menu.name),
-        //               menuData: menu,
-        //             );
-        //           },
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
-
-        Align(
-          alignment: Alignment.topRight,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 70, right: 16),
-            child: AnimatedSlide(
-              offset: menuDisplayed ? Offset.zero : const Offset(0, -5),
-              duration: const Duration(milliseconds: 300),
-              child: Row(
-                children: [
-                  const Expanded(child: SizedBox()),
-                  Flexible(
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.surface,
-                        boxShadow: const [BoxShadow(blurRadius: 4)],
-                        borderRadius: const BorderRadius.all(Radius.circular(8))
-                      ),
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: menus.length,
+            Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  color: Theme.of(context).colorScheme.surface,
+                  child: TopBar(
+                    user: widget.thisUser,
+                    inDarkMode: widget.inDarkMode,
+                    toggleTheme: widget.toggleTheme,
+                    toggleMenuVisibility: () {
+                      setState(() {
+                        menuDisplayed = !menuDisplayed;
+                      });
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: widget.chats.isNotEmpty
+                      ? ListView.builder(
+                          padding: const EdgeInsets.all(16),
+                          itemCount: widget.chats.length,
                           itemBuilder: (context, index) {
-                            var menu = menus[index];
                             return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                MenuItem(
-                                  key: ObjectKey(menu.name),
-                                  menuData: menu,
-                                ),
-                                const SizedBox(height: 12)
+                                Chat(
+                                    key: ObjectKey(widget.chats[index].chatId),
+                                    chat: widget.chats[index]),
+                                const SizedBox(height: 12),
                               ],
                             );
-                          }),
-                    ),
-                  ),
-                ],
-              ),
+                          },
+                        )
+                      : Image.asset('assets/images/ozi empty state.png'),
+                ),
+                // const Chat(chat: testChat1)
+              ],
             ),
-          ),
-        )
-      ],
+
+            // Container(
+            //   child: Row(
+            //     children: [
+            //       Expanded(child: SizedBox()),
+            //       Flexible(
+            //         child: ListView.builder(
+            //           shrinkWrap: true,
+            //           itemCount: menus.length,
+            //           itemBuilder: (context, index) {
+            //             var menu = menus[index];
+            //             return MenuItem(
+            //               key: ObjectKey(menu.name),
+            //               menuData: menu,
+            //             );
+            //           },
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+
+            Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 70, right: 16),
+                child: AnimatedSlide(
+                  offset: menuDisplayed ? Offset.zero : const Offset(0, -5),
+                  duration: const Duration(milliseconds: 300),
+                  child: Row(
+                    children: [
+                      const Expanded(child: SizedBox()),
+                      Flexible(
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.surface,
+                            boxShadow: const [BoxShadow(blurRadius: 4)],
+                            borderRadius: const BorderRadius.all(Radius.circular(8))
+                          ),
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: menus.length,
+                              itemBuilder: (context, index) {
+                                var menu = menus[index];
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    MenuItem(
+                                      key: ObjectKey(menu.name),
+                                      menuData: menu,
+                                    ),
+                                    const SizedBox(height: 12)
+                                  ],
+                                );
+                              }),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
